@@ -31,7 +31,7 @@ namespace BuyerGuide.ApplicationServices
 
         public List<Outlet> GetAll(string searchString, TypeOfOwnership typeOfOwnership, Specialization specialization)
         {
-            var result = new List<Outlet>();
+            var result = GetAll();
            
             if(searchString != null && searchString != string.Empty)
             {

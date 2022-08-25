@@ -4,8 +4,8 @@
 <link rel="stylesheet" href="~/css/form.css">
 <div class="form">
     <div class="form__content">
-        <div class="form__content__title">Додати магазин</div>
-        <form asp-controller="Admin" asp-action="AddOutlet">
+        <div class="form__content__title">Редагування магазину</div>
+        <form asp-controller="Admin" asp-action="Update" asp-route-id="@Model.Id">
             <div class="form__content__item">
                 <span class="display">Назва</span>
                 <input minlength="5" maxlength="30" required asp-for="Name" type="text">
@@ -50,7 +50,7 @@
                 <input required asp-for="Close" type="time">
                 <span asp-validation-for="Close"></span>
             </div>
-            <input type="submit" value="Створити">
+            <input type="submit" value="Редагувати">
         </form>
     </div>
 </div>

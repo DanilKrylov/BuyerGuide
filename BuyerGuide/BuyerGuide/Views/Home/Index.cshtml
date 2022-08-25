@@ -3,10 +3,14 @@
 
 
 @{
-    if(!User.Identity.IsAuthenticated){
-    <div>Авторизуйтесь, щоб побачити торгові точки</div>
-    }else{
-    <link rel="stylesheet" href="~/css/index.css">
+    if (!User.Identity.IsAuthenticated)
+    {
+        <div>Авторизуйтесь, щоб побачити торгові точки</div>
+    }
+    else
+    {
+        <script src="~/js/print.js"></script>
+        <link rel="stylesheet" href="~/css/index.css">
         <div class="search">
             <form asp-action="Index" asp-controller="Home" method="post">
                 <div class="search__content">
@@ -39,13 +43,16 @@
         <div class="products">
             <div class="products__content">
                 @{
-                    if (!User.IsInRole("admin")){
-                        <button>Роздрукувати</button>
+                    if (!User.IsInRole("admin"))
+                    {
+                        <button id="btnPrint">Роздрукувати</button>
                     }
                 }
-                <div class="products__content__item">
-                    @{
-                        foreach (var outlet in Model) {
+
+                @{
+                    foreach (var outlet in Model)
+                    {
+                        <div class="products__content__item">
                             <div class="products__item__block">
                                 <p style="font-weight: 600; font-size: 20px;">@outlet.Name</p>
                                 <p>Адреса: @outlet.Address</p>
@@ -83,22 +90,24 @@
                                 }
                                 <p>Час роботи: @outlet.Open.Hour : @outlet.Open.Minute - @outlet.Close.Hour : @outlet.Close.Minute</p>
                             </div>
-                            if (User.IsInRole("admin"))
-                            {
-                                <div class="products__item__block">
-                                    <a asp-action="Update" asp-controller="Admin">Редагувати</a>
-                                    <a asp-action="Remove" asp-controller="Admin" asp-route-id=@outlet>Видалити</a>
-                                </div>
+                            @{
+                                if (User.IsInRole("admin"))
+                                {
+                                    <div class="products__item__block">
+                                        <button><a asp-action="Update" asp-controller="Admin" asp-route-id=@outlet.Id>Редагувати</a></button>
+                                        <button><a asp-action="Remove" asp-controller="Admin" asp-route-id=@outlet.Id>Видалити</a></button>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="products__item__block">
+                                        <input class="custom-checkbox" id="@outlet.Id" type="checkbox">
+                                    </div>
+                                }
                             }
-                            else
-                            {
-                                <div class="products__item__block">
-                                    <input type="checkbox">
-                                </div>
-                            }
-                        }
+                        </div>
                     }
-                </div>
+                }
             </div>
         </div>
     }

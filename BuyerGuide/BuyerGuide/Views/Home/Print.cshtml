@@ -1,0 +1,66 @@
+﻿@{
+    Layout = null;
+}
+@model List<Outlet>
+
+<div class="container">
+    <main>
+        <div class="content">
+            <div class="products">
+                <div class="products__content">
+                    <table>
+                        <tr>
+                            <th>Назва</th>
+                            <th>Адреса</th>
+                            <th>Спеціалізація</th>
+                            <th>Форма власності</th>
+                            <th>Час роботи</th>
+                        </tr>
+
+                        @{
+                            foreach (var outlet in Model)
+                            {
+                                <tr>
+                                    @{
+                                        <th>@outlet.Name</th>
+                                        <th>@outlet.Address</th>
+                                        switch (outlet.Specialization)
+                                        {
+                                            case Specialization.Any:
+                                                <th>будь яка</th>
+                                                break;
+                                            case Specialization.ConstructionMaterials:
+                                                <th>будівельні матеріали</th>
+                                                break;
+                                            case Specialization.Products:
+                                                <th>продукти</th>
+                                                break;
+                                            case Specialization.Technique:
+                                                <th>техніка</th>
+                                                break;
+                                        }
+                                        switch (outlet.TypeOfOwnership)
+                                        {
+                                            case TypeOfOwnership.Any:
+                                                <th>приватна та державна</th>
+                                                break;
+                                            case TypeOfOwnership.Private:
+                                                <th>приватна</th>
+                                                break;
+                                            case TypeOfOwnership.State:
+                                                <th>державна</th>
+                                                break;
+                                        }
+                                        <th>@outlet.Open.Hour : @outlet.Open.Minute - @outlet.Close.Hour : @outlet.Close.Minute</th>
+                                    }
+
+
+                                </tr>
+                            }
+                        }
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>

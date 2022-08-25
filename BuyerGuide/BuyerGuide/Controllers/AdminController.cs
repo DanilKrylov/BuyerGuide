@@ -43,7 +43,7 @@ namespace BuyerGuide.Controllers
             if (ModelState.IsValid)
             {
                 _outletService.Update(outlet);
-                return Redirect("../Home/Index");
+                return RedirectToAction("Index", "Home");
             }
 
             return View(outlet);
@@ -52,7 +52,7 @@ namespace BuyerGuide.Controllers
         public IActionResult Remove(int id)
         {
             _outletService.Remove(id);
-            return Redirect("../Home/Index");
+            return RedirectToAction("Index", "Home");
         }
     }
 }

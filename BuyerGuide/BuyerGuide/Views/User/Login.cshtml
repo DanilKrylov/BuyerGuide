@@ -4,7 +4,7 @@
 <div class="form" method="post" asp-action="Login" asp-controller="User">
     <div class="form__content">
         <div class="form__content__title">Вхід</div>
-        <form action="">
+        <form asp-controller="User" asp-action="Login">
             <div class="form__content__item">
                 <span class="display">Email</span>
                 <input asp-for="Email" type="email">

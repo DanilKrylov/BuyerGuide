@@ -4,35 +4,35 @@
 <div class="form">
     <div class="form__content">
         <div class="form__content__title">Реєстрація</div>
-        <form action="">
+        <form asp-action="Register" asp-controller="User">
             <div class="form__content__item">
                 <span class="display">Email</span>
-                <input asp-for="Password" type="email">
-                <span asp-validation-for="PasswordConfirm"></span>
+                <input asp-for="Email" type="email">
+                <span asp-validation-for="Email"></span>
             </div>
             <div class="form__content__item">
                 <span class="display">Телефон</span>
-                <input asp-for="Password" type="tel">
-                <span asp-validation-for="PasswordConfirm"></span>
+                <input asp-for="Phone" type="tel">
+                <span asp-validation-for="Phone"></span>
             </div>
             <div class="form__content__item">
                 <span class="display">Ім'я</span>
-                <input asp-for="Password" type="text">
-                <span asp-validation-for="PasswordConfirm"></span>
+                <input asp-for="Name" type="text">
+                <span asp-validation-for="Name"></span>
             </div>
             <div class="form__content__item">
                 <span class="display">Прізвище</span>
-                <input asp-for="Password" type="text">
-                <span asp-validation-for="PasswordConfirm"></span>
+                <input asp-for="Surname" type="text">
+                <span asp-validation-for="Surname"></span>
             </div>
             <div class="form__content__item">
                 <span class="display">Пароль</span>
                 <input asp-for="Password" type="password">
-                <span asp-validation-for="PasswordConfirm"></span>
+                <span asp-validation-for="Password"></span>
             </div>
             <div class="form__content__item">
                 <span class="display">Повторити пароль</span>
-                <input asp-for="Password" type="password">
+                <input asp-for="PasswordConfirm" type="password">
                 <span asp-validation-for="PasswordConfirm"></span>
             </div>
             <input type="submit" value="Зареєструватися">

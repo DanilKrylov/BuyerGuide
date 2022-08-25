@@ -38,7 +38,23 @@ namespace BuyerGuide.Controllers
                 return View();
             }
 
-            return View(_outletService.GetAll());
+            return View(_outletService.GetAll(searchString, typeOfOwnership, specialization));
+        }
+
+        [HttpPost]
+        public IActionResult Print(int[] ides)
+        {
+            var result = new List<Outlet>();
+            foreach(var id in ides)
+            {
+                try
+                {
+                    result.Add(_outletService.Get(id));
+                }
+                catch { }
+            }
+
+            return View(result);
         }
     }
 }
