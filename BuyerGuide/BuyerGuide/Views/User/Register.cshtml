@@ -1,0 +1,41 @@
+﻿@model RegisterViewModel
+
+<link rel="stylesheet" href="~/css/form.css">
+<div class="form">
+    <div class="form__content">
+        <div class="form__content__title">Реєстрація</div>
+        <form action="">
+            <div class="form__content__item">
+                <span class="display">Email</span>
+                <input asp-for="Password" type="email">
+                <span asp-validation-for="PasswordConfirm"></span>
+            </div>
+            <div class="form__content__item">
+                <span class="display">Телефон</span>
+                <input asp-for="Password" type="tel">
+                <span asp-validation-for="PasswordConfirm"></span>
+            </div>
+            <div class="form__content__item">
+                <span class="display">Ім'я</span>
+                <input asp-for="Password" type="text">
+                <span asp-validation-for="PasswordConfirm"></span>
+            </div>
+            <div class="form__content__item">
+                <span class="display">Прізвище</span>
+                <input asp-for="Password" type="text">
+                <span asp-validation-for="PasswordConfirm"></span>
+            </div>
+            <div class="form__content__item">
+                <span class="display">Пароль</span>
+                <input asp-for="Password" type="password">
+                <span asp-validation-for="PasswordConfirm"></span>
+            </div>
+            <div class="form__content__item">
+                <span class="display">Повторити пароль</span>
+                <input asp-for="Password" type="password">
+                <span asp-validation-for="PasswordConfirm"></span>
+            </div>
+            <input type="submit" value="Зареєструватися">
+        </form>
+    </div>
+</div> 

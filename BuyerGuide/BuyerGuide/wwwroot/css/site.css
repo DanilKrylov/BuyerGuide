@@ -1,0 +1,39 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+header {
+    background: rgb(163, 238, 200);
+}
+.header__content {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+.header__content__menu {
+    display: flex;
+    align-items: center;
+}
+
+.header__content__menu nav {
+    margin-right: 20px;
+    font-size: 20px;
+}
+
+.header__content__menu nav img{
+    height: 50px;
+}
+
+.header__content__menu nav a{
+    color: black;
+}
+
+.header__content__menu nav a:hover{
+    opacity: 0.8;
+}
+
+.content{
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 50px 0;
+}

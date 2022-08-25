@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/css/nullStyle.css">
+    <link rel="stylesheet" href="~/css/site.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div class="header__content">
+                <div class="header__content__menu">
+                    <nav>
+                        <img src="~/img/png-transparent-mobile-logo-online-shopping-shopping-cart-online-marketplace-mobile-phones-maecenas-windows-marketplace-black.png"
+                             alt="">
+                    </nav>
+                    @{
+                        if (!User.Identity.IsAuthenticated)
+                        {
+                            <nav><a href="../User/Register">Реєструватися</a></nav>
+                            <nav><a href="../User/Login">Логін</a></nav>
+                        }
+                        else
+                        {
+                            <nav><a href="../User/Logout">Вийти з аккаунта</a></nav>
+                            if (User.IsInRole("admin"))
+                            {
+                                <nav><a href="../Admin/AddOutlet">Додати торгову точку</a></nav>
+                            }
+                        }
+                    }
+                </div>
+            </div>
+        </header>
+        <main>
+            <div class="content">
+                @RenderBody()
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>

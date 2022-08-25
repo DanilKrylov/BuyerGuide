@@ -1,0 +1,105 @@
+﻿@model List<Outlet>
+
+
+
+@{
+    if(!User.Identity.IsAuthenticated){
+    <div>Авторизуйтесь, щоб побачити торгові точки</div>
+    }else{
+    <link rel="stylesheet" href="~/css/index.css">
+        <div class="search">
+            <form asp-action="Index" asp-controller="Home" method="post">
+                <div class="search__content">
+                    <div class="search__content__items">
+                        <div class="search__items__item">
+                            <input name="searchString" type="text" placeholder="Назва">
+                        </div>
+                        <div class="search__items__item">
+                            <select name="specialization" id="">
+                                <option selected value="0">Будь яка</option>
+                                <option value="1">Продукти</option>
+                                <option value="2">Техніка</option>
+                                <option value="3">Будівельні матеріали</option>
+                            </select>
+                        </div>
+                        <div class="search__items__item">
+                            <select name="typeOfOwnership" id="">
+                                <option selected value="0">будьяка</option>
+                                <option value="1">Приватна</option>
+                                <option value="2">Державна</option>
+                            </select>
+                        </div>
+                        <div class="search__items__item">
+                            <input style="cursor: pointer;" type="submit" value="Пошук">
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="products">
+            <div class="products__content">
+                @{
+                    if (!User.IsInRole("admin")){
+                        <button>Роздрукувати</button>
+                    }
+                }
+                <div class="products__content__item">
+                    @{
+                        foreach (var outlet in Model) {
+                            <div class="products__item__block">
+                                <p style="font-weight: 600; font-size: 20px;">@outlet.Name</p>
+                                <p>Адреса: @outlet.Address</p>
+                                <p>Телефон: @outlet.Phone</p>
+                                @{
+                                    switch (outlet.Specialization)
+                                    {
+                                        case Specialization.Any:
+                                            <p>Спеціалізація: будь яка</p>
+                                            break;
+                                        case Specialization.ConstructionMaterials:
+                                            <p>Спеціалізація: будівельні матеріали</p>
+                                            break;
+                                        case Specialization.Products:
+                                            <p>Спеціалізація: продукти</p>
+                                            break;
+                                        case Specialization.Technique:
+                                            <p>Спеціалізація: техніка</p>
+                                            break;
+                                    }
+                                }
+                                @{
+                                    switch (outlet.TypeOfOwnership)
+                                    {
+                                        case TypeOfOwnership.Any:
+                                            <p>Тип власності: приватна та державна</p>
+                                            break;
+                                        case TypeOfOwnership.Private:
+                                            <p>Тип власності: приватна</p>
+                                            break;
+                                        case TypeOfOwnership.State:
+                                            <p>Тип власності: державна</p>
+                                            break;
+                                    }
+                                }
+                                <p>Час роботи: @outlet.Open.Hour : @outlet.Open.Minute - @outlet.Close.Hour : @outlet.Close.Minute</p>
+                            </div>
+                            if (User.IsInRole("admin"))
+                            {
+                                <div class="products__item__block">
+                                    <a asp-action="Update" asp-controller="Admin">Редагувати</a>
+                                    <a asp-action="Remove" asp-controller="Admin" asp-route-id=@outlet>Видалити</a>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="products__item__block">
+                                    <input type="checkbox">
+                                </div>
+                            }
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    }
+}

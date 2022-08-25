@@ -1,0 +1,21 @@
+﻿@model LoginViewModel
+
+<link rel="stylesheet" href="~/css/form.css">
+<div class="form" method="post" asp-action="Login" asp-controller="User">
+    <div class="form__content">
+        <div class="form__content__title">Вхід</div>
+        <form action="">
+            <div class="form__content__item">
+                <span class="display">Email</span>
+                <input asp-for="Email" type="email">
+                <span asp-validation-for="Email"></span>
+            </div>
+            <div class="form__content__item">
+                <span class="display">Пароль</span>
+                <input asp-for="Password" type="password">
+                <span asp-validation-for="Password"></span>
+            </div>
+            <input type="submit" value="Увійти">
+        </form>
+    </div>
+</div> 

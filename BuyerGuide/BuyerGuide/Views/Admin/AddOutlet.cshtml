@@ -1,0 +1,56 @@
+﻿@model Outlet
+
+
+<link rel="stylesheet" href="~/css/form.css">
+<div class="form">
+    <div class="form__content">
+        <div class="form__content__title">Додати магазину</div>
+        <form action="">
+            <div class="form__content__item">
+                <span class="display">Назва</span>
+                <input asp-for="Name" type="text">
+                <span asp-validation-for="Name"></span>
+            </div>
+            <div class="form__content__item">
+                <span class="display">Адреса</span>
+                <input asp-for="Address" type="text">
+                <span asp-validation-for="Address"></span>
+            </div>
+            <div class="form__content__item">
+                <span class="display">Телефон</span>
+                <input asp-for="Phone" type="text">
+                <span asp-validation-for="Phone"></span>
+            </div>
+            <div class="form__content__item">
+                <span class="display">Спеціалізація</span>
+                <select asp-for="Specialization" id="">
+                    <option selected value="0">Будь яка</option>
+                    <option value="1">Продукти</option>
+                    <option value="2">Техніка</option>
+                    <option value="3">Будівельні матеріали</option>
+                </select>
+                <span asp-validation-for="Specialization"></span>
+            </div>
+            <div class="form__content__item">
+                <span class="display">Форма власності</span>
+                <select asp-for="TypeOfOwnership" id="">
+                    <option selected value="0">Приватна та державна</option>
+                    <option value="1">Приватна</option>
+                    <option value="2">Державна</option>
+                </select>
+                <span asp-validation-for="TypeOfOwnership"></span>
+            </div>
+            <div class="form__content__item">
+                <span class="display">Час відкриття</span>
+                <input asp-for="Open" type="time">
+                <span asp-validation-for="Open"></span>
+            </div>
+            <div class="form__content__item">
+                <span class="display">Час закриття</span>
+                <input asp-for="Close" type="time">
+                <span asp-validation-for="Close"></span>
+            </div>
+            <input type="submit" value="Створити">
+        </form>
+    </div>
+</div>

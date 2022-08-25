@@ -1,0 +1,21 @@
+.products {}
+
+.products__content {}
+
+table {
+    width: 100%;
+    border: 1px solid #000;
+    padding: 20px;
+    border-collapse: collapse;
+    border: 1px solid black;
+}
+
+table th {
+    border: 1px solid black;
+    padding: 5px;
+}
+
+table td {
+    border: 1px solid black;
+    padding: 5px;
+}
