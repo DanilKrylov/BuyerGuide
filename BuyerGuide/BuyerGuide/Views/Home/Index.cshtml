@@ -5,7 +5,7 @@
 @{
     if (!User.Identity.IsAuthenticated)
     {
-        <div>Авторизуйтесь, щоб побачити торгові точки</div>
+        <div id="non_auth">Авторизуйтесь, щоб побачити торгові точки</div>
     }
     else
     {
@@ -94,8 +94,12 @@
                                 if (User.IsInRole("admin"))
                                 {
                                     <div class="products__item__block">
-                                        <button><a asp-action="Update" asp-controller="Admin" asp-route-id=@outlet.Id>Редагувати</a></button>
-                                        <button><a asp-action="Remove" asp-controller="Admin" asp-route-id=@outlet.Id>Видалити</a></button>
+                                        <button>
+                                            <a style="width: 100%; height: 100%; padding: 11px;" asp-action="Update" asp-controller="Admin" asp-route-id=@outlet.Id>Редагувати</a>
+                                        </button>
+                                        <button>
+                                            <a style="width: 100%; height: 100%; padding: 11px;" asp-action="Remove" asp-controller="Admin" asp-route-id=@outlet.Id>Видалити</a>
+                                        </button>
                                     </div>
                                 }
                                 else
